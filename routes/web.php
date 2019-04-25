@@ -1,5 +1,5 @@
 <?php
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +30,6 @@ Route::Resource('projects','ProjectsController');
 
 //User
 Route::Resource('users','UsersController');
-Route::get('/{project}/users','UsersController@show');
 
 //ProjectTasks
 Route::Resource('tasks','ProjectTasksController');

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!--
 This is a starter template page. Use this page to start your new project from
-scratch. This page gets rid of all links and provides the needed markup only.
+scratch. This page gets rid of all links and provides the needed markup only. 
 -->
 <html>
 
@@ -28,7 +28,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/css/skins/skin-blue.min.css">
 
-  <link href="../../bower_components/select2/dist/css/select2.css" rel="stylesheet" />
+  <link href="../../bower_components/select2/dist/css/select2.min.css" rel="stylesheet" />
   
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,6 +39,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ----------------------------------------------responsive-table---------------------------------------- -->
   <!-- DataTables -->
   <link rel="stylesheet" href="../../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
+
 <!-- ----------------------------------------------responsive-table---------------------------------------- -->
 </head>
 
@@ -392,6 +393,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
      user experience. Slimscroll is required when using the
      fixed layout. -->
   <script src={{ asset('js/task.js') }}></script>
+  
   <script>
   $(document).ready(function() {
       $('.select2').select2();
@@ -421,6 +423,54 @@ scratch. This page gets rid of all links and provides the needed markup only.
       'autoWidth'   : false
     })
   })
+</script>
+<script>
+function format(d) {
+  var ourRequest = new XMLHttpRequest();
+  ourRequest.open('GET','/api/getProjectTask/'+d[0]);
+  ourRequest.onload = function test(){
+    var ourData = JSON.parse(ourRequest.responseText); 
+    console.log(ourData);             
+  };
+  ourRequest.send();
+
+return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
+'<tr>'+
+'<td>Full name:</td>'+
+'<td>'+d[0]+'</td>'+
+'</tr>'+
+'<tr>'+
+'<td>Extension number:</td>'+
+'<td>'+d[2]+'</td>'+
+'</tr>'+
+'<tr>'+
+'<td>Extra info:</td>'+
+'<td>And any further details here (images etc)...</td>'+
+'</tr>'+
+'</table>';
+}
+
+$(document).ready(function(){
+  var table = $('#projectTable').DataTable();
+     
+    // Add event listener for opening and closing details
+    $('#projectTable tbody').on('click', '#details-control', function () {
+        var tr = $(this).closest('tr');
+        var row = table.row( tr );
+ 
+        if ( row.child.isShown() ) {
+            // This row is already open - close it
+            row.child.hide();
+            tr.removeClass('shown');
+        }
+        else {
+            // Open this row
+            row.child( format(row.data()) ).show();
+            tr.addClass('shown');
+        }
+    } );
+
+});
 </script>
 </body>
 

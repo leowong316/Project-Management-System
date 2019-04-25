@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Project;
 use App\Project_Staff;
+use App\Task;
+use App\User;
 
 class ProjectsController extends Controller
 {
@@ -16,28 +18,51 @@ class ProjectsController extends Controller
 
     public function create()
     {
-        return view('projects.create');
+        $users = User::where('type','0')->get();
+        return view('projects.create',compact('users'));
     }
 
     public function store()
     {
         // $attributes = auth()->id();
         // dd($attributes);
-        return request()->except('_token');
-
-        $project = Project::create([
-            'name' => request('name'),
-            'description' => request('description'),
-            'start_date' => request('start-date'),
-            'end_date' => request('end-date'),
-            'fee' => request('fee')
-        ]);
+        $project = Project::create(request()->except('_token','taskname','taskdescription','staff'));
 
         Project_Staff::create([
             'project_id' => $project->id,
             'user_id' => auth()->id()
         ]);
-
+        
+        if (request('staff') != '' )
+        {
+            $staff = request('staff');
+            for($i = 0;$i<count($staff);$i++)
+            {
+                Project_Staff::create([
+                    'project_id' => $project->id,
+                    'user_id' => $staff[$i]
+                ]);
+            }
+        }
+        
+        if (request('taskname') !=null )
+        {
+            $attributes = request([
+                'taskname',
+                'taskdescription'
+            ]);
+            $a = $attributes['taskname'];
+            $b = $attributes['taskdescription'];
+            for($i = 0;$i<count($attributes);$i++)
+            {
+                Task::create([
+                    'project_id' => $project->id,
+                    'name' => $a[$i],
+                    'description' => $b[$i]
+                ]);
+            }
+        }
+        
         return redirect('projects');
     }
 
@@ -62,5 +87,10 @@ class ProjectsController extends Controller
     {
         $project->delete();
         return back();
+    }
+
+    public function getProjectTask($id)
+    {
+        return Project::where('id', $id)->with('Task')->first()->task; 
     }
 }

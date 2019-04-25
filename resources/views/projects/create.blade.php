@@ -5,7 +5,15 @@
 @section('title','Create Project')
 
 @section('content')
-
+<style>
+.select2-selection__choice {
+    color:black!important;
+    background-color:#52525D!important;
+    border-color: #367fa9!important;
+    padding: 1px 10px!important;
+    color: white!important;
+}
+</style>
 <div class="container">
     <div class="box">
         <div class="box-body">
@@ -28,14 +36,14 @@
                 <div class="form-group">
                     <label for="start_date" class="control-label col-sm-2">Start Date</label>
                     <div class="col-sm-8">
-                        <input class="form-control" type="date" name="start-date" id="">
+                        <input class="form-control" type="date" name="start_date" id="">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="end_date" class="control-label col-sm-2">End Date</label>
                     <div class="col-sm-8">
-                        <input class="form-control" type="date" name="end-date" id="">
+                        <input class="form-control" type="date" name="end_date" id="">
                     </div>
                 </div>
 
@@ -45,25 +53,32 @@
                         <input class="form-control" type="number" name="fee" id="">
                     </div>
                 </div>
-                
-                <hr>
-
-                <div id="task_list">
-
-                </div>
 
                 <div class="form-group">
-                    <div class="col-sm-1">
-                        <a href="#" class="btn btn-success form-control addTaskBtn" >New</a>   
+                    <label for="user" class="control-label col-sm-2">Staff</label>
+                    <div class="col-sm-8">
+                        <select name="staff[]" class="form-control select2" multiple="multiple" data-placeholder="Select a Staff" style="width: 100%;">
+                            @foreach ($users as $user) 
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
 
+                <hr>
 
+                <div class="form-group">
+                    <div class="col-sm-1">
+                        <a href="javascript:void()" class="btn btn-success addTaskBtn" >Add New Task</a>   
+                    </div>
+                </div>
+                
+                <div id="task_list"></div>
                 
                 <div class="form-group">
                 <label for="fee" class="control-label col-sm-2"></label>
                     <div class="col-sm-8">
-                        <button type="submit" class="btn btn-block">Submit</button>
+                        <button type="submit" class="btn btn-block">Submit</button> 
                     </div>       
                 </div>
             </form>

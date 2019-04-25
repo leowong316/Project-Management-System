@@ -8,7 +8,7 @@
 <div class="container">
     <form method="POST" class="form-horizontal" action="/projects/{{$project->id}}">
     @method('PATCH')
-    @csrf
+    @csrf 
         <div class="form-group">
             <label for="name" class="control-label col-sm-2">Project Name</label>
             <div class="col-sm-8">
