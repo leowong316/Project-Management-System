@@ -36,7 +36,7 @@
                 <div class="form-group">
                     <label for="start_date" class="control-label col-sm-2">Start Date</label>
                     <div class="col-sm-8">
-                        <input class="form-control" type="date" name="start_date" id="">
+                        <input class="form-control" type="date" name="start_date" id="" value="{{date('Y-m-d')}}" >
                     </div>
                 </div>
 

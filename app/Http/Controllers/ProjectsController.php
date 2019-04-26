@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 use App\Project;
 use App\Project_Staff;
 use App\Task;
@@ -12,7 +13,12 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-        $projects = Project::all();
+        // $projects = Project::all();
+        $projects = DB::table('projects')
+            ->join('Project_Staff', 'projects.id', '=', 'project_staff.project_id')
+            ->select('projects.*')
+            ->where('project_staff.user_id',auth()->id())
+            ->get();
         return view('projects.index',compact('projects'));
     }
 
@@ -45,7 +51,7 @@ class ProjectsController extends Controller
             }
         }
         
-        if (request('taskname') !=null )
+        if (request('taskname') && request('taskdescription')!==null )
         {
             $attributes = request([
                 'taskname',

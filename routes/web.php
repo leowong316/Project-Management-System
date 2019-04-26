@@ -37,6 +37,12 @@ Route::get('/tasks/{project}/create','ProjectTasksController@create');
 Route::get('/{project}/tasks','ProjectTasksController@show');
 Route::post('/{project}/tasks','ProjectTasksController@store');
 
+//StaffProject
+Route::Resource('staffprojects', 'StaffProjectsController');
+
+//StaffProjectTasks
+Route::get('{project}/stafftasks','StaffProjectTasksController@create');
+Route::post('{project}/stafftasks','StaffProjectTasksController@store');
 
 
 

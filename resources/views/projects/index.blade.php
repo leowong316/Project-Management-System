@@ -40,7 +40,7 @@ tr.shown td.details-control {
             <tbody>                          
                 @foreach($projects as $project)  
                     <tr class="column">
-                        <td id="details-control">{{$project->id}}</td>
+                        <td id="details-control"></td>
                         <td>{{$project->name}}</td>
                         <td>{{$project->description}}</td>
                         <td>{{$project->start_date}}</td>
@@ -91,5 +91,4 @@ tr.shown td.details-control {
     <!-- /.box-body -->
 </div>
 <!-- /.box -->
-<div id="animal-info"></div>
 @endsection

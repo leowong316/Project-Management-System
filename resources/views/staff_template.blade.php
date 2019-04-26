@@ -3,7 +3,7 @@
 This is a starter template page. Use this page to start your new project from
 scratch. This page gets rid of all links and provides the needed markup only. 
 -->
-<html> 
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -252,8 +252,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class=""><a href="/projects"><span>Project Management</span></a></li>
-            <li class=""><a href="/users"><span>Staff Managment</span></a></li>
+            <li class=""><a href="/staffprojects"><span>Project Management</span></a></li>
             <li class="treeview">
                 <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -424,54 +423,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     })
   })
 </script>
-<script>
-function format(d) {
-  // var ourRequest = new XMLHttpRequest();
-  // ourRequest.open('GET','/api/getProjectTask/'+d[0]);
-  // ourRequest.onload = function test(){
-  //   var ourData = JSON.parse(ourRequest.responseText); 
-  //   console.log(ourData);             
-  // };
-  // ourRequest.send();
 
-return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-'<tr>'+
-'<td>Project Name:</td>'+
-'<td>;">&nbsp'+d[0]+'</td>'+
-'</tr>'+
-'<tr>'+
-'<td>Extension number:</td>'+
-'<td>&nbsp'+d[2]+'</td>'+
-'</tr>'+
-'<tr>'+
-'<td>Extra info:</td>'+
-'<td>And any further details here (images etc)...</td>'+
-'</tr>'+
-'</table>';
-}
-
-$(document).ready(function(){
-  var table = $('#projectTable').DataTable();
-     
-    // Add event listener for opening and closing details
-    $('#projectTable tbody').on('click', '#details-control', function () {
-        var tr = $(this).closest('tr');
-        var row = table.row( tr );
- 
-        if ( row.child.isShown() ) {
-            // This row is already open - close it
-            row.child.hide();
-            tr.removeClass('shown');
-        }
-        else {
-            // Open this row
-            row.child( format(row.data()) ).show();
-            tr.addClass('shown');
-        }
-    } );
-
-});
-</script>
 </body>
 
 </html>
