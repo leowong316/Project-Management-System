@@ -10,6 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Carbon\Carbon;
 
 Route::get('/', function () {
     return view('welcome');
@@ -41,10 +42,21 @@ Route::post('/{project}/tasks','ProjectTasksController@store');
 Route::Resource('staffprojects', 'StaffProjectsController');
 
 //StaffProjectTasks
-Route::get('{project}/stafftasks','StaffProjectTasksController@create');
-Route::post('{project}/stafftasks','StaffProjectTasksController@store');
+// Route::get('{project}/stafftasks','StaffProjectTasksController@create');
+// Route::post('{project}/stafftasks','StaffProjectTasksController@store');
 
+//StaffWorks
+Route::resource('staffworks', 'StaffWorksController');
 
+//Works
+Route::resource('works', 'WorksController');
+Route::get('/works/{project}/create','WorksController@create');
+Route::post('/works/{project}','WorksController@store');
+
+Route::get('time',function (){
+    // return Carbon::now();
+    return 2.5 * 60;
+});
 
 
 

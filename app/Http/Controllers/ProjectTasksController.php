@@ -18,7 +18,7 @@ class ProjectTasksController extends Controller
         $task->name = request('name');
         $task->description = request('description');
         $task->save();
-        return redirect('/projects/'.$task->project_id);
+        return redirect('/projects/'.$task->project_id.'/edit');
     }
 
     public function create(Project $project)
@@ -28,13 +28,17 @@ class ProjectTasksController extends Controller
 
     public function store(Project $project)
     {
-        Task::create([
-            'project_id' => $project->id,
-            'name' => request('name'),
-            'description' => request('description')
-        ]);
-
-        return redirect('/projects/'.$project->id.'/tasks');
+        if(request('taskname')){
+            foreach(request('taskname') as $key => $task){
+                $desc = request('taskdescription')[$key];
+                Task::create([
+                    'project_id' => $project->id,
+                    'name' => $task,
+                    'description' => $desc
+                ]);
+            }
+        }
+        return redirect('/projects/'.$project->id.'/edit');
     }
 
     public function destroy(Task $task)

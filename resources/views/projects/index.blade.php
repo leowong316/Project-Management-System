@@ -2,7 +2,7 @@
 
 @section('pageTitle', 'Project')
 
-@section('title','Project List')
+@section('title','Project Management')
 
 @section('content')
 <style>
@@ -10,8 +10,8 @@
     background: url('https://raw.githubusercontent.com/DataTables/DataTables/master/examples/resources/details_open.png') no-repeat center center;
     cursor: pointer;
 }
-tr.shown td.details-control {
-    background: url('raw.githubusercontent.com/DataTables/DataTables/master/examples/resources/details_close.png') no-repeat center center;
+tr.shown #details-control {
+    background: url('https://raw.githubusercontent.com/DataTables/DataTables/master/examples/resources/details_close.png') no-repeat center center;
 }
 </style>
 <div class="box">
@@ -28,29 +28,37 @@ tr.shown td.details-control {
         <table id="projectTable" class="table table-bordered table-striped table-hover">
             <thead>
                 <tr>
-                    <th></th>
+                    <!-- <th></th> -->
+                    <!-- <th>ID</th> -->
                     <th>Project Name</th>
                     <th>Description</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Project Fee</th>
+                    <th>Staff</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>                          
                 @foreach($projects as $project)  
                     <tr class="column">
-                        <td id="details-control"></td>
+                        <!-- <td id="details-control"></td> -->
+                        <!-- <td>{{$project->id}}</td> -->
                         <td>{{$project->name}}</td>
                         <td>{{$project->description}}</td>
                         <td>{{$project->start_date}}</td>
                         <td>{{$project->end_date}}</td>
                         <td>RM {{$project->fee}}</td>
+                        <td>
+                            @foreach($project->project_staff as $staff)
+                            <p>{{$staff->user->name}}</p>
+                            @endforeach
+                        </td>
                         <td style="" >
                             <div class="pull-left">
-                                <a href="/{{$project->id}}/tasks">
+                                <a href="/projects/{{$project->id}}">
                                     <button class="btn btn-default btn-xs">
-                                        <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-eye-open" alt="view" aria-hidden="true"></span>
                                     </button>
                                 </a>
                             </div>
@@ -74,15 +82,17 @@ tr.shown td.details-control {
                     </tr>	
 
                 @endforeach
-            <tbody>
+            </tbody>
             <tfoot>
                 <tr>
-                    <th></th>
+                    <!-- <th></th> -->
+                    <!-- <th>ID</th> -->
                     <th>Project Name</th>
                     <th>Description</th>
                     <th>Start Date</th>
                     <th>End Date</th>
                     <th>Project Fee</th>
+                    <th>Staff</th>
                     <th>Action</th>
                 </tr>
             </tfoot>

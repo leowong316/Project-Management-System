@@ -18,3 +18,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/getProjectTask/{id}', 'ProjectsController@getProjectTask');
+
+Route::get('/getProject/{id}', 'ProjectsController@getProject');
+

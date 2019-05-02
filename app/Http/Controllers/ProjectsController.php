@@ -13,12 +13,18 @@ class ProjectsController extends Controller
 {
     public function index()
     {
-        // $projects = Project::all();
-        $projects = DB::table('projects')
-            ->join('Project_Staff', 'projects.id', '=', 'project_staff.project_id')
-            ->select('projects.*')
-            ->where('project_staff.user_id',auth()->id())
-            ->get();
+        $projects = Project::all();
+
+        //admin
+        //list all projects
+
+        //staff
+        //list projects with staff id
+        // $projects = DB::table('projects')
+        //     ->join('Project_Staff', 'projects.id', '=', 'project_staff.project_id')
+        //     ->select('projects.*')
+        //     ->where('project_staff.user_id',auth()->id())
+        //     ->get();
         return view('projects.index',compact('projects'));
     }
 
@@ -30,41 +36,26 @@ class ProjectsController extends Controller
 
     public function store()
     {
-        // $attributes = auth()->id();
-        // dd($attributes);
         $project = Project::create(request()->except('_token','taskname','taskdescription','staff'));
 
-        Project_Staff::create([
-            'project_id' => $project->id,
-            'user_id' => auth()->id()
-        ]);
-        
-        if (request('staff') != '' )
-        {
-            $staff = request('staff');
-            for($i = 0;$i<count($staff);$i++)
-            {
-                Project_Staff::create([
+        //if got taskname && teskdescription
+        //foreach taskname
+        if (request('taskname')) {
+            foreach(request('taskname') as $key => $task) {
+                $desc = request('taskdescription')[$key];
+                
+                Task::create([
                     'project_id' => $project->id,
-                    'user_id' => $staff[$i]
+                    'name' => $task,
+                    'description' => $desc
                 ]);
             }
         }
-        
-        if (request('taskname') && request('taskdescription')!==null )
-        {
-            $attributes = request([
-                'taskname',
-                'taskdescription'
-            ]);
-            $a = $attributes['taskname'];
-            $b = $attributes['taskdescription'];
-            for($i = 0;$i<count($attributes);$i++)
-            {
-                Task::create([
+        if (request('staff')){
+            foreach(request('staff') as $key => $staff){
+                Project_Staff::create([
                     'project_id' => $project->id,
-                    'name' => $a[$i],
-                    'description' => $b[$i]
+                    'user_id' => $staff
                 ]);
             }
         }
@@ -74,18 +65,13 @@ class ProjectsController extends Controller
 
     public function edit(Project $project)
     {
-        return view('projects.edit',compact('project'));
+        $tasks = Task::where('project_id', $project->id)->get();
+        return view('projects.edit',compact('project', 'tasks'));
     }
 
     public function update(Project $project)
     {
-        $project->name = request('name');
-        $project->description = request('description');
-        $project->start_date = request('start-date');
-        $project->end_date = request('end-date');
-        $project->fee = request('fee');
-        $project->save();
-
+        $project->update(request()->except('_method','_token'));
         return redirect('projects');
     }
 
@@ -95,8 +81,25 @@ class ProjectsController extends Controller
         return back();
     }
 
+    public function show(Project $project)
+    {
+        return view('projects.show',compact('project'));
+    }
+
     public function getProjectTask($id)
     {
         return Project::where('id', $id)->with('Task')->first()->task; 
+        //the other method ('id', $id)->with('Task')->get() console.log(ourData[0].task) 0 meant first .task meant ->task;
+    }
+
+    public function getProject($id)
+    {
+        // $projects = Project::all();
+        $projects = DB::table('projects')
+            ->join('Project_Staff', 'projects.id', '=', 'project_staff.project_id')
+            ->select('projects.*')
+            ->where('project_staff.user_id',$id)
+            ->get();
+        return $projects;
     }
 }

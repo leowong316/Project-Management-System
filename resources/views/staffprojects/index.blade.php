@@ -1,8 +1,8 @@
-@extends('staff_template')
+@extends('admin_template')
 
 @section('pageTitle', 'Project')
 
-@section('title','Project List')
+@section('title','View Project')
 
 @section('content')
 <div class="box">
@@ -11,7 +11,7 @@
     </div>
     <!-- /.box-header -->
     <div class="box-body">
-        <table id="projectTable" class="table table-bordered table-striped table-hover">
+        <table id="" class="table table-bordered table-striped table-hover display">
             <thead>
                 <tr>
                     <th>Project Name</th>
@@ -28,11 +28,11 @@
                         <td>{{$project->description}}</td>
                         <td>{{$project->start_date}}</td>
                         <td>{{$project->end_date}}</td>
-                        <td style="" >
+                        <td>
                             <div class="pull-left">
-                                <a href="/{{$project->id}}/stafftasks">
+                                <a href="/staffprojects/{{$project->id}}">
                                     <button class="btn btn-default btn-xs">
-                                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                                        <span class="glyphicon glyphicon-eye-open" alt="view" aria-hidden="true"></span>
                                     </button>
                                 </a>
                             </div>

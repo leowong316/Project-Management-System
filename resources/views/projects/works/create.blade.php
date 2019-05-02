@@ -1,31 +1,32 @@
-@extends('staff_template')
+@extends('admin_template')
 
-@section('pageTitle', 'Work')
+@section('pageTitle', 'Create')
 
-@section('title','Add Work')
+@section('title','Project Management')
 
 @section('content')
-<div class="container">
-    <div class="box">
+<div class="box">
+    <div class="box-header">
+        <h3 class="box-title">Add Work</h3>
+    </div>
         <div class="box-body">
-            <form method="POST" class="form-horizontal" action="/{{$project->id}}/stafftasks">
+            <form method="POST" class="form-horizontal" action="/works/{{$project->id}}" name="form">
                 @csrf
                 <div class="form-group">
-                    <label for="task" class="control-label col-sm-2">Task</label>
+                    <label for="project" class="control-label col-sm-2">Task Title</label>
                     <div class="col-sm-8">
-                        <select class="form-control" name="task" style="width: 100%;">
-                            @foreach ($tasks as $task) 
-                                <option value="{{$task->id}}">{{$task->name}}</option>
-                            @endforeach
-                                <option value="other">Others</option>
+                        <select class="form-control" name="task_name" style="width: 100%;">
+                        @foreach ($project->task as  $task)
+                            <option value="{{$task->name}}">{{$task->name}}</option>
+                        @endforeach
+                            <option value="other">Other</option>
                         </select>
-                    </div>
+                    </div>      
                 </div>
-
                 <div class="form-group">
                     <label for="desctiption" class="control-label col-sm-2">Description</label>
                     <div class="col-sm-8">
-                        <textarea class="form-control" name="description" id="" cols="30" rows="5"></textarea>
+                        <textarea class="form-control" name="task_description" id="" cols="30" rows="5"></textarea>
                     </div>
                 </div>
 
@@ -70,15 +71,16 @@
                     </div>
                 </div>
 
-                <hr>
-
-                <!-- <div class="form-group">
-                    <div class="col-sm-1">
-                        <a href="javascript:void()" class="btn btn-success addTaskBtn" >Add New Task</a>   
+                <div class="form-group">
+                    <label for="status" class="control-label col-sm-2">Staff</label>
+                    <div class="col-sm-8">
+                        <select class="form-control " name="user_id" style="width: 100%;">
+                            @foreach ($project->project_staff as $staff)
+                            <option value="{{$staff->user->id}}">{{$staff->user->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                 </div>
-                
-                <div id="task_list"></div> -->
                 
                 <div class="form-group">
                 <label for="fee" class="control-label col-sm-2"></label>
@@ -88,8 +90,6 @@
                 </div>
             </form>
         </div>
-        
-    </div>
-    
+    </div> 
 </div>
 @endsection

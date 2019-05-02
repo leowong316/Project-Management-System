@@ -252,7 +252,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <ul class="sidebar-menu">
             <li class="header">HEADER</li>
             <!-- Optionally, you can add icons to the links -->
-            <li class=""><a href="/staffprojects"><span>Project Management</span></a></li>
+            <li class=""><a href="/staffprojects"><span>View Project</span></a></li>
+            <li class=""><a href="/staffworks"><span>Manage Work</span></a></li>
             <li class="treeview">
                 <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -411,19 +412,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- page script -->
 <script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-</script>
+$(document).ready(function() {
+    $('table.display').DataTable();
+} );
 
+function getTaskBtn(){
+  var p;
+  var text='';
+    p = document.form.project_id.value;
+    var ourRequest = new XMLHttpRequest();
+    ourRequest.open('GET','/api/getProjectTask/'+p);
+    ourRequest.onload = function (){
+        var ourData = JSON.parse(ourRequest.responseText);
+        console.log(ourData);
+          for(var i=0;i<ourData.length;i++)
+          {
+            text += '<option>'+ourData[i].name+'</option>'
+          }
+          document.getElementById('Task').innerHTML=
+          '<div class="form-group">'+
+            '<label for="task" class="control-label col-sm-2">Task</label>'+
+            '<div class="col-sm-8">'+
+              '<select class="form-control" name="task_name" style="width: 100%;">'+
+              text+
+              '<option value="other">Other</other>'
+              '</select>'+
+            '</div>'+
+          '</div>'
+    };
+    ourRequest.send(); 
+}
+</script>
 </body>
 
 </html>

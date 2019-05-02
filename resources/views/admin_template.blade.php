@@ -47,224 +47,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <div class="wrapper">
 
     <!-- Main Header -->
-    <header class="main-header">
+    @include('adminheader')
 
-      <!-- Logo -->
-      <a href="index2.html" class="logo">
-        <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>A</b>LT</span>
-        <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Admin</b>LTE</span>
-      </a>
-
-      <!-- Header Navbar -->
-      <nav class="navbar navbar-static-top" role="navigation">
-        <!-- Sidebar toggle button-->
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-          <span class="sr-only">Toggle navigation</span>
-        </a>
-        <!-- Navbar Right Menu -->
-        <div class="navbar-custom-menu">
-          <ul class="nav navbar-nav">
-            <!-- Messages: style can be found in dropdown.less-->
-            <li class="dropdown messages-menu">
-              <!-- Menu toggle button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-envelope-o"></i>
-                <span class="label label-success">4</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have 4 messages</li>
-                <li>
-                  <!-- inner menu: contains the messages -->
-                  <ul class="menu">
-                    <li>
-                      <!-- start message -->
-                      <a href="#">
-                        <div class="pull-left">
-                          <!-- User Image -->
-                          <img src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-                        </div>
-                        <!-- Message title and timestamp -->
-                        <h4>
-                        Support Team
-                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                      </h4>
-                        <!-- The message -->
-                        <p>Why not buy a new awesome theme?</p>
-                      </a>
-                    </li>
-                    <!-- end message -->
-                  </ul>
-                  <!-- /.menu -->
-                </li>
-                <li class="footer"><a href="#">See All Messages</a></li>
-              </ul>
-            </li>
-            <!-- /.messages-menu -->
-
-            <!-- Notifications Menu -->
-            <li class="dropdown notifications-menu">
-              <!-- Menu toggle button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-bell-o"></i>
-                <span class="label label-warning">10</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have 10 notifications</li>
-                <li>
-                  <!-- Inner Menu: contains the notifications -->
-                  <ul class="menu">
-                    <li>
-                      <!-- start notification -->
-                      <a href="#">
-                        <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                      </a>
-                    </li>
-                    <!-- end notification -->
-                  </ul>
-                </li>
-                <li class="footer"><a href="#">View all</a></li>
-              </ul>
-            </li>
-            <!-- Tasks Menu -->
-            <li class="dropdown tasks-menu">
-              <!-- Menu Toggle Button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-flag-o"></i>
-                <span class="label label-danger">9</span>
-              </a>
-              <ul class="dropdown-menu">
-                <li class="header">You have 9 tasks</li>
-                <li>
-                  <!-- Inner menu: contains the tasks -->
-                  <ul class="menu">
-                    <li>
-                      <!-- Task item -->
-                      <a href="#">
-                        <!-- Task title and progress text -->
-                        <h3>
-                        Design some buttons
-                        <small class="pull-right">20%</small>
-                      </h3>
-                        <!-- The progress bar -->
-                        <div class="progress xs">
-                          <!-- Change the css width attribute to simulate progress -->
-                          <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-                            <span class="sr-only">20% Complete</span>
-                          </div>
-                        </div>
-                      </a>
-                    </li>
-                    <!-- end task item -->
-                  </ul>
-                </li>
-                <li class="footer">
-                  <a href="#">View all tasks</a>
-                </li>
-              </ul>
-            </li>
-            <!-- User Account Menu -->
-            <li class="dropdown user user-menu">
-              <!-- Menu Toggle Button -->
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                <!-- The user image in the navbar-->
-                <img src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                <span class="hidden-xs">Alexander Pierce</span>
-              </a>
-              <ul class="dropdown-menu">
-                <!-- The user image in the menu -->
-                <li class="user-header">
-                  <img src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.3.11/img/user2-160x160.jpg" class="img-circle" alt="User Image">
-
-                  <p>
-                    Alexander Pierce - Web Developer
-                    <small>Member since Nov. 2012</small>
-                  </p>
-                </li>
-                <!-- Menu Body -->
-                <li class="user-body">
-                  <div class="row">
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Followers</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Sales</a>
-                    </div>
-                    <div class="col-xs-4 text-center">
-                      <a href="#">Friends</a>
-                    </div>
-                  </div>
-                  <!-- /.row -->
-                </li>
-                <!-- Menu Footer-->
-                <li class="user-footer">
-                  <div class="pull-left">
-                    <a href="#" class="btn btn-default btn-flat">Profile</a>
-                  </div>
-                  <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                  </div>
-                </li>
-              </ul>
-            </li>
-            <!-- Control Sidebar Toggle Button -->
-            <li>
-              <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </header>
     <!-- Left side column. contains the logo and sidebar -->
     <!-- Left side column. contains the sidebar -->
-<aside class="main-sidebar">
-
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-
-        <!-- Sidebar user panel (optional) -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="{{ asset("/bower_components/admin-lte/dist/img/user2-160x160.jpg") }}" class="img-circle" alt="User Image" />
-            </div>
-            <div class="pull-left info">
-                <p>Alexander Pierce</p>
-                <!-- Status -->
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-        </div>
-        
-
-        <!-- search form (Optional) -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..."/>
-    <span class="input-group-btn">
-    <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i></button>
-    </span>
-            </div>
-        </form>
-        <!-- /.search form -->
-
-        <!-- Sidebar Menu -->
-        <ul class="sidebar-menu">
-            <li class="header">HEADER</li>
-            <!-- Optionally, you can add icons to the links -->
-            <li class=""><a href="/projects"><span>Project Management</span></a></li>
-            <li class=""><a href="/users"><span>Staff Managment</span></a></li>
-            <li class="treeview">
-                <a href="#"><span>Multilevel</span> <i class="fa fa-angle-left pull-right"></i></a>
-                <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
-                </ul>
-            </li>
-        </ul><!-- /.sidebar-menu -->
-    </section>
-    <!-- /.sidebar -->
-</aside>
+    @if(auth()->user()->type)
+      @include('adminsidebar')
+    @else
+      @include('staffsidebar')
+    @endif
     
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -390,10 +181,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <script src="../../bower_components/select2/dist/js/select2.min.js"></script>
   <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
-     user experience. Slimscroll is required when using the
+     user experience. Slimscroll is require d when using the
      fixed layout. -->
   <script src={{ asset('js/task.js') }}></script>
-  
+
+
   <script>
   $(document).ready(function() {
       $('.select2').select2();
@@ -403,6 +195,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 <!-- Bootstrap 3.3.7 -->
 <script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- DataTables -->
 <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
 <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
@@ -410,44 +204,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="../../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="../../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<!-- <script src="../../bower_components/admin-lte/dist/js/adminlte.min.js"></script> -->
+<!-- AdminLTE for demo purposes -->
+<!-- <script src="../../bower_components/admin-lte/dist/js/demo.js"></script> -->
 <!-- page script -->
-<script>
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-</script>
-<script>
-function format(d) {
-  // var ourRequest = new XMLHttpRequest();
-  // ourRequest.open('GET','/api/getProjectTask/'+d[0]);
-  // ourRequest.onload = function test(){
-  //   var ourData = JSON.parse(ourRequest.responseText); 
-  //   console.log(ourData);             
-  // };
-  // ourRequest.send();
 
-return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">'+
-'<tr>'+
-'<td>Project Name:</td>'+
-'<td>;">&nbsp'+d[0]+'</td>'+
-'</tr>'+
-'<tr>'+
-'<td>Extension number:</td>'+
-'<td>&nbsp'+d[2]+'</td>'+
-'</tr>'+
-'<tr>'+
-'<td>Extra info:</td>'+
-'<td>And any further details here (images etc)...</td>'+
-'</tr>'+
-'</table>';
+
+<script>
+function format(x,d) {
+var textt = "";
+var i;
+for (i = 0; i < d.length; i++) {
+  textt += '<tr>'+
+    '<td style="width:25%;">('+(i+1)+') Task Name:</td>'+
+    '<td >&nbsp'+d[i].name+'</td>'+
+    '</tr>'+
+    '<tr>'+
+    '<td>Task Description:</td>'+
+    '<td>&nbsp'+d[i].description+'</td>'+
+  '</tr>';
+}
+return ('<table class="table table-hover" style="width:60%;">'+
+          '<tr>'+
+            '<td colspan="2"><b>'+x[2]+'</b></td>'+
+          '<tr>'
+            +textt+
+        '</table>');
+
 }
 
 $(document).ready(function(){
@@ -464,13 +248,54 @@ $(document).ready(function(){
             tr.removeClass('shown');
         }
         else {
+          var x = '';
+          x = row.data();
+          var ourRequest = new XMLHttpRequest();
+          ourRequest.open('GET','/api/getProjectTask/'+x[1]);
+          ourRequest.onload = function (){
+            var ourData = JSON.parse(ourRequest.responseText); 
+            
             // Open this row
-            row.child( format(row.data()) ).show();
-            tr.addClass('shown');
+            row.child( format(x,ourData) ).show();
+            tr.addClass('shown');             
+          };
+          ourRequest.send();
+            
         }
     } );
 
 });
+$(document).ready(function() {
+    $('table.display').DataTable();
+} );
+</script>
+<script>
+function getTaskBtn(){
+  var p;
+  var text='';
+    p = document.form.project_id.value;
+    var ourRequest = new XMLHttpRequest();
+    ourRequest.open('GET','/api/getProjectTask/'+p);
+    ourRequest.onload = function (){
+        var ourData = JSON.parse(ourRequest.responseText);
+        console.log(ourData);
+          for(var i=0;i<ourData.length;i++)
+          {
+            text += '<option>'+ourData[i].name+'</option>'
+          }
+          document.getElementById('Task').innerHTML=
+          '<div class="form-group">'+
+            '<label for="task" class="control-label col-sm-2">Task</label>'+
+            '<div class="col-sm-8">'+
+              '<select class="form-control" name="task_name" style="width: 100%;">'+
+              text+
+              '<option value="other">Other</other>'
+              '</select>'+
+            '</div>'+
+          '</div>'
+    };
+    ourRequest.send(); 
+}
 </script>
 </body>
 

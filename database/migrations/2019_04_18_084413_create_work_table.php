@@ -16,6 +16,7 @@ class CreateWorkTable extends Migration
         Schema::create('work', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedInteger('project_id');
+            $table->unsignedInteger('user_id');
             $table->string('task_name');
             $table->string('task_description');
             $table->date('date');

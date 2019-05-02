@@ -43,7 +43,7 @@
                 <div class="form-group">
                     <label for="end_date" class="control-label col-sm-2">End Date</label>
                     <div class="col-sm-8">
-                        <input class="form-control" type="date" name="end_date" id="">
+                        <input class="form-control" type="date" name="end_date" id="" min="{{date('Y-m-d')}}">
                     </div>
                 </div>
 
@@ -67,14 +67,14 @@
 
                 <hr>
 
+                <div id="task_list"></div>
+                
                 <div class="form-group">
                     <div class="col-sm-1">
                         <a href="javascript:void()" class="btn btn-success addTaskBtn" >Add New Task</a>   
                     </div>
-                </div>
-                
-                <div id="task_list"></div>
-                
+                </div>      
+
                 <div class="form-group">
                 <label for="fee" class="control-label col-sm-2"></label>
                     <div class="col-sm-8">

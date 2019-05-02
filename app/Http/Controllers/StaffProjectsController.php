@@ -17,4 +17,9 @@ class StaffProjectsController extends Controller
             ->get();
         return view ('staffprojects.index',compact('projects'));
     }
+    public function show($id)
+    {
+        $projects = Project::where('id',$id)->get()->first();
+        return view('staffprojects.show',compact('projects'));
+    }
 }

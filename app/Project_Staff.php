@@ -15,9 +15,9 @@ class Project_Staff extends Model
         return $this->belongsTo(Project::class);
     }
 
-    public function Staff()
+    public function User()
     {
         
-        return $this->belongsTo(Staff::class);
+        return $this->belongsTo(User::class);
     }
 }
